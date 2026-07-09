@@ -1,0 +1,56 @@
+/*
+  Lưu ý bản quyền font:
+  Bộ source không đóng gói file font gốc. Bạn đặt các font đã có quyền sử dụng vào /public/fonts đúng tên bên dưới.
+*/
+
+@font-face {
+  /* Font body chính theo file Roboto bạn cung cấp. */
+  font-family: "RobotoLocal";
+  /* Browser ưu tiên font local, sau đó mới tải từ public/fonts. */
+  src: local("Roboto"), url("/fonts/Roboto-VariableFont_wdth,wght.ttf") format("truetype");
+  /* Font variable hỗ trợ dải weight rộng. */
+  font-weight: 100 900;
+  /* Font thường, không nghiêng. */
+  font-style: normal;
+  /* Cho phép text hiện trước bằng fallback để tránh nhấp nháy trắng. */
+  font-display: swap;
+}
+
+@font-face {
+  /* Font body nghiêng theo file Roboto Italic bạn cung cấp. */
+  font-family: "RobotoLocal";
+  /* Đường dẫn font nghiêng trong public/fonts. */
+  src: local("Roboto Italic"), url("/fonts/Roboto-Italic-VariableFont_wdth,wght.ttf") format("truetype");
+  /* Font variable hỗ trợ dải weight rộng. */
+  font-weight: 100 900;
+  /* Khai báo style nghiêng. */
+  font-style: italic;
+  /* Tránh block render khi font chưa tải xong. */
+  font-display: swap;
+}
+
+@font-face {
+  /* Font tiêu đề lớn theo file PS-Anton bạn cung cấp. */
+  font-family: "PSAntonLocal";
+  /* Đường dẫn font display trong public/fonts. */
+  src: local("Anton"), url("/fonts/PS-Anton-Regular-V1.0.otf") format("opentype");
+  /* Anton là font một weight nên khai báo 400. */
+  font-weight: 400;
+  /* Font thường. */
+  font-style: normal;
+  /* Render nhanh bằng fallback rồi thay font sau. */
+  font-display: swap;
+}
+
+@font-face {
+  /* Font phụ nếu muốn dùng Myriad cho label hoặc caption. */
+  font-family: "MyriadLocal";
+  /* Đường dẫn font Myriad trong public/fonts. */
+  src: local("Myriad Pro"), url("/fonts/MyriadPro-Regular.otf") format("opentype");
+  /* Font regular. */
+  font-weight: 400;
+  /* Font thường. */
+  font-style: normal;
+  /* Không chặn render. */
+  font-display: swap;
+}

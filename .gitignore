@@ -1,0 +1,19 @@
+# Thư mục dependency sinh ra sau khi chạy npm install.
+node_modules
+
+# Output build của Next.js.
+.next
+out
+
+# File log sinh trong quá trình chạy lệnh.
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# File môi trường riêng từng máy.
+.env*.local
+
+# File hệ điều hành.
+.DS_Store
+Thumbs.db

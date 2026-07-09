@@ -1,0 +1,45 @@
+/* Nạp layer base/components/utilities của TailwindCSS. */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  /* Tính width/height ổn định hơn khi có padding và border. */
+  box-sizing: border-box;
+}
+
+html {
+  /* Scroll mượt khi bấm anchor. */
+  scroll-behavior: smooth;
+}
+
+body {
+  /* Reset margin mặc định của browser. */
+  margin: 0;
+  /* Dùng font token tập trung. */
+  font-family: var(--font-sans);
+  /* Nền tổng thể màu kem như giấy/menu nhà hàng. */
+  background: var(--brand-cream);
+  /* Màu chữ mặc định. */
+  color: var(--brand-ink);
+  /* Tối ưu render chữ. */
+  text-rendering: optimizeLegibility;
+  /* Làm font mịn hơn trên WebKit. */
+  -webkit-font-smoothing: antialiased;
+  /* Làm font mịn hơn trên Firefox macOS. */
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  /* Link kế thừa màu từ component cha. */
+  color: inherit;
+  /* Bỏ gạch chân mặc định, chỉ thêm khi cần. */
+  text-decoration: none;
+}
+
+::selection {
+  /* Màu chọn chữ theo đỏ thương hiệu. */
+  background: rgba(237, 28, 36, 0.22);
+  /* Màu chữ khi chọn. */
+  color: var(--brand-ink);
+}

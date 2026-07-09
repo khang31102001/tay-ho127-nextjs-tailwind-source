@@ -1,0 +1,42 @@
+@layer components {
+  /* Class gom style dùng chung để giảm lặp Tailwind ở nhiều component. */
+  .section-padding {
+    /* Khoảng cách dọc chuẩn cho từng section desktop/mobile. */
+    @apply py-16 md:py-24;
+  }
+
+  .container-page {
+    /* Container nhất quán cho toàn site. */
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+
+  .eyebrow {
+    /* Nhãn nhỏ trên tiêu đề section. */
+    @apply inline-flex items-center gap-2 rounded-full border border-brand-line bg-white/75 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-brand-green shadow-soft backdrop-blur;
+  }
+
+  .heading-xl {
+    /* Tiêu đề hero lớn, bám cảm giác logo: dày, mạnh, tương phản. */
+    @apply font-display text-5xl font-black uppercase leading-[0.94] tracking-tight text-white sm:text-6xl lg:text-8xl;
+  }
+
+  .heading-section {
+    /* Tiêu đề section dùng chung trên nền sáng. */
+    @apply font-display text-4xl font-black uppercase leading-none tracking-tight text-brand-ink md:text-6xl;
+  }
+
+  .body-lead {
+    /* Đoạn mô tả lớn dưới hero hoặc section. */
+    @apply text-base leading-8 text-brand-muted md:text-lg;
+  }
+
+  .card-surface {
+    /* Card sáng dùng cho món ăn, điểm bán hàng, review. */
+    @apply rounded-card border border-brand-line bg-white shadow-soft;
+  }
+
+  .focus-ring {
+    /* Focus accessibility cho link/button khi tab bằng bàn phím. */
+    @apply outline-none ring-offset-2 ring-offset-brand-cream focus-visible:ring-4 focus-visible:ring-brand-red/40;
+  }
+}

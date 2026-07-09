@@ -1,0 +1,44 @@
+:root {
+  /* Đỏ thương hiệu: trích theo logo màu, dùng cho CTA và tiêu điểm. */
+  --brand-red: #ed1c24;
+  /* RGB đỏ để Tailwind dùng opacity dạng bg-brand-red/10. */
+  --brand-red-rgb: 237 28 36;
+  /* Đỏ đậm: dùng khi hover hoặc cần tăng độ tương phản. */
+  --brand-red-dark: #b9121a;
+  /* RGB đỏ đậm cho hover có opacity. */
+  --brand-red-dark-rgb: 185 18 26;
+  /* Xanh thương hiệu: trích theo logo màu, dùng cho nhãn truyền thống. */
+  --brand-green: #2f6b3a;
+  /* RGB xanh để Tailwind dùng opacity dạng text-brand-green/80. */
+  --brand-green-rgb: 47 107 58;
+  /* Xanh đậm: dùng cho text mạnh và nền phụ. */
+  --brand-green-dark: #1f4d2b;
+  /* RGB xanh đậm cho các lớp phủ. */
+  --brand-green-dark-rgb: 31 77 43;
+  /* Nền kem: tạo cảm giác ẩm thực truyền thống, sạch và ấm. */
+  --brand-cream: #fff8ea;
+  /* RGB nền kem cho opacity. */
+  --brand-cream-rgb: 255 248 234;
+  /* Nền bánh/cuốn: dùng cho section phụ và card sáng. */
+  --brand-wheat: #f5e3c8;
+  /* RGB nền lúa mì cho opacity. */
+  --brand-wheat-rgb: 245 227 200;
+  /* Màu chữ chính trên nền sáng. */
+  --brand-ink: #17120d;
+  /* RGB màu chữ chính cho overlay. */
+  --brand-ink-rgb: 23 18 13;
+  /* Màu chữ phụ giảm tương phản. */
+  --brand-muted: #70675d;
+  /* RGB màu chữ phụ. */
+  --brand-muted-rgb: 112 103 93;
+  /* Tông gỗ lấy cảm hứng từ thớt trong ảnh món ăn. */
+  --brand-wood: #b77b46;
+  /* RGB màu gỗ. */
+  --brand-wood-rgb: 183 123 70;
+  /* Đường viền nhẹ cho card và input. */
+  --brand-line: rgba(23, 18, 13, 0.12);
+  /* Font thân bài: ưu tiên font local nếu người dùng đặt vào public/fonts. */
+  --font-sans: "RobotoLocal", "MyriadLocal", Arial, sans-serif;
+  /* Font tiêu đề: ưu tiên Anton local, fallback Roboto để không lỗi layout. */
+  --font-display: "PSAntonLocal", "RobotoLocal", Arial, sans-serif;
+}
