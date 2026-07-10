@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @layer components {
   /* Class gom style dùng chung để giảm lặp Tailwind ở nhiều component. */
   .section-padding {
