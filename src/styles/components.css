@@ -9,9 +9,42 @@
     @apply py-16 md:py-24;
   }
 
+  .promotion-zone {
+    @apply relative flex min-h-[485px] items-start justify-center bg-[#666664] pt-16 text-center text-[40px] font-black text-black;
+  }
+
+  .promotion-zone::before,
+  .promotion-zone::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  /* .promotion-zone::before {
+    background: linear-gradient(to top right, transparent calc(50% - 1px), #111 50%, transparent calc(50% + 1px));
+  }
+
+  .promotion-zone::after {
+    background: linear-gradient(to bottom right, transparent calc(50% - 1px), #111 50%, transparent calc(50% + 1px));
+  } */
+
+  .placeholder-box {
+    /* Hộp placeholder màu xám nhạt, dùng cho hình ảnh chưa có. */
+    @apply rounded-md border border-[#ece4c7] bg-[#fffbe9] shadow-soft;
+  }
+   .food-pattern {
+    background-color: #ff9418;
+    background-image:
+      radial-gradient(ellipse at center, rgba(255,255,255,0.20) 0 42%, transparent 43%),
+      radial-gradient(ellipse at center, transparent 0 55%, rgba(255,255,255,0.24) 56% 60%, transparent 61%);
+    background-size: 104px 72px, 104px 72px;
+    background-position: -18px 8px, -18px 8px;
+  }
+
   .container-page {
     /* Container nhất quán cho toàn site. */
-    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-16;
   }
 
   .eyebrow {

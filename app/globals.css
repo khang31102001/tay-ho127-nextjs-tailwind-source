@@ -36,7 +36,12 @@ a {
   /* Bỏ gạch chân mặc định, chỉ thêm khi cần. */
   text-decoration: none;
 }
-
+img {
+  /* Bỏ khoảng trắng dưới ảnh. */
+  display: block;
+  /* Ảnh không vượt quá container. */
+  max-width: 100%;
+}
 ::selection {
   /* Màu chọn chữ theo đỏ thương hiệu. */
   background: rgba(237, 28, 36, 0.22);
