@@ -31,14 +31,14 @@ export function CheckoutSection() {
     <main className="site-shell food-pattern min-h-screen px-5 py-28 md:px-0">
       <div className="mx-auto max-w-[730px] space-y-3">
         <section className="rounded-lg bg-white p-7 shadow-soft">
-          <h1 className="mb-5 text-[18px] font-black text-tayho-green">THỰC ĐƠN CỦA BẠN HÔM NAY</h1>
+          <h1 className="mb-5 text-[18px] font-black text-brand-green">THỰC ĐƠN CỦA BẠN HÔM NAY</h1>
           <div className="space-y-0">
             {orderLines.map((line, index) => (
               <div key={line.name} className="grid grid-cols-[115px_1fr_120px] gap-4 border-b border-black py-3 last:border-b-0">
                 <img src="/assets/product-banh-cuon.png" alt={line.name} className="h-[88px] w-[105px] rounded object-cover" />
                 <div>
-                  <h3 className="text-[16px] font-black text-tayho-greenDark">{line.name}</h3>
-                  <p className="mt-2 text-[13px] text-[#8b8b8b]">Số lượng <button className="mx-2 text-black">−</button> <strong className="text-black">{line.qty}</strong> <button className="mx-2 text-black">+</button></p>
+                  <h3 className="text-[16px] font-black text-brand-greenDark">{line.name}</h3>
+                  <p className="mt-2 text-[13px] font-bold text-black">Số lượng <button className="mx-2 text-black">−</button> <strong className="text-black">{line.qty}</strong> <button className="mx-2 text-black">+</button></p>
                   <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[12px] text-[#494949]">
                     <span>{index === 1 ? "Loại chả" : "Nước mắm"}</span>
                     {line.options.map((option, optionIndex) => (
@@ -100,7 +100,7 @@ export function CheckoutSection() {
 
         <div className="flex items-center justify-end gap-8 py-10 text-white">
           <strong className="text-[24px]">TỔNG CỘNG: &nbsp; 159.000 ₫</strong>
-          <button className="rounded-md bg-tayho-red px-12 py-4 text-[16px] font-black">ĐẶT ĐƠN</button>
+          <button className="rounded-md bg-brand-red px-12 py-4 text-[16px] font-black">ĐẶT ĐƠN</button>
         </div>
       </div>
     </main>

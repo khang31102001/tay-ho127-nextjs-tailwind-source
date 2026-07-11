@@ -1,5 +1,17 @@
+import Image from "next/image";
 export function PromotionZone() {
-  return <section className="promotion-zone">Promotion zone</section>;
+  return (
+    <section className="promotion-zone">
+      <Image
+          src="/images/promotion-zone-1.png"
+          alt="Hoạt động tại Bánh Cuốn Tây Hồ 127"
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority
+        />
+    </section>
+  );
 }
 // export function PromotionZone() {
 //   return (

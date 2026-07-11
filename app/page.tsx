@@ -16,19 +16,22 @@ import { ImageActivitySection } from "@/components/home/ImageActivitySection";
 import { Testimonials } from "@/components/home/Testimonials";
 import { StatsMichelin } from "@/components/home/StatsMichelin";
 import { BrandProofSection } from "@/components/home/BrandProofSection";
+import { MainHero } from "@/components/home/MainHero";
+import { TopHero } from "@/components/home/TopHero";
 
 // Trang chủ index: gom các section chính theo thứ tự landing page.
 export default function HomePage() {
   // Render landing page với hệ section tách nhỏ để dễ bảo trì.
   return (
     <>
-      <Hero />
+        
+      <TopHero />
       <StorySection />
       <PromotionZone />
       <FavoriteSection />
      
       <BrandProofSection />
-       <Testimonials />
+      <Testimonials />
       {/* <BrandProof />
       <Highlights />
       <MenuPreview />

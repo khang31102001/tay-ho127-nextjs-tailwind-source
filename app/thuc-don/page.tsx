@@ -21,7 +21,7 @@ export default function MenuPage() {
       <MenuHero />
  
       <MenuGrid />
-      <CTASection />
+      {/* <CTASection /> */}
     </>
   );
 }

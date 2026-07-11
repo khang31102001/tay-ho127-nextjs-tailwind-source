@@ -17,6 +17,8 @@ import { Footer } from "@/components/layout/Footer";
 // Import thông tin site tập trung từ data.
 import { site } from "@/data/site";
 import { Header } from "@/components/layout/Header";
+import { AppProviders } from "@/provider/app-providers";
+
 
 // Metadata SEO cơ bản của Next.js App Router.
 export const metadata = {
@@ -40,10 +42,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="vi">
       <body>
-        <Navbar />
-        {/* <Header variant="light" /> */}
-        <main>{children}</main>
-        <Footer />
+       <AppProviders>
+          <Header variant="light" />
+          <main>{children}</main>
+          <Footer />
+        </AppProviders>
       </body>
     </html>
   );

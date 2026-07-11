@@ -1,10 +1,10 @@
 import { Header } from "@/components/layout/Header";
 import Link from "next/link";
+import { ButtonLink } from "../ui/ButtonLink";
 
 export function MainHero() {
   return (
-    <section className="relative overflow-hidden bg-tayho-cream pb-0">
-      <Header variant="light" />
+    <section className="relative overflow-hidden bg-brand-cream pb-0">
 
       <div className="relative min-h-[410px] px-5 pt-10 md:px-[105px] md:pt-12">
         <img src="/assets/leaf-basil.png" alt="" className="absolute -left-16 top-8 w-[118px] rotate-[18deg] opacity-90" />
@@ -13,8 +13,8 @@ export function MainHero() {
 
         <div className="relative z-10 grid items-center gap-8 md:grid-cols-[0.82fr_1.18fr]">
           <div>
-            <p className="mb-0 text-[30px] font-black leading-none text-tayho-green md:text-[42px]">Bánh cuốn</p>
-            <h1 className="font-display text-[62px] font-black leading-[0.9] tracking-tight text-tayho-red md:text-[92px]">
+            <p className="mb-0 text-[30px] font-black leading-none text-brand-green md:text-[42px]">Bánh cuốn</p>
+            <h1 className="font-display text-[62px] font-black leading-[0.9] tracking-tight text-brand-red md:text-[92px]">
               TÂY HỒ
             </h1>
             <p className="mt-5 max-w-[330px] text-[15px] font-black leading-5 text-tayho-greenDark">
@@ -22,8 +22,8 @@ export function MainHero() {
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
-              <Link href="/checkout" className="btn-primary">Đặt ngay</Link>
-              <Link href="/menu" className="btn-outline">Xem thực đơn</Link>
+              <ButtonLink href="/checkout" className="btn-primary">Đặt ngay</ButtonLink>
+              <ButtonLink href="/menu" className="btn-outline">Xem thực đơn</ButtonLink>
             </div>
           </div>
 

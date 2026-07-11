@@ -3,6 +3,7 @@ import { formatCurrency } from "@/data/menu-items";
 
 type ProductCardProps = {
   item: MenuItem;
+ 
 };
 
 export function ProductCard({ item }: ProductCardProps) {
@@ -12,7 +13,7 @@ export function ProductCard({ item }: ProductCardProps) {
         <img src={item.image} alt={item.name} className="h-full w-full object-cover" />
         {item.badge && (
           <span className="absolute right-2 top-2 rounded bg-brand-red px-2 py-1 text-[10px] font-black text-white">
-            {item.badge}
+            {item.badge}      
           </span>
         )}
         {item.id === 1 && (
@@ -30,11 +31,13 @@ export function ProductCard({ item }: ProductCardProps) {
           </div>
         </div>
 
-        <div className="mt-3 flex items-center justify-between">
-          <div className="text-[11px] text-[#1f1f1f]">★★★★★ ({item.ratingCount}) đánh giá</div>
+        <div className="mt-3 flex items-center justify-between text-sm gap-1">
+          <div className="text-[#1f1f1f]">★★★★★ ({item.ratingCount}) đánh giá</div>
           <div className="flex justify-end gap-2">
             <button className="flex h-6 w-6 items-center justify-center rounded bg-brand-red text-lg font-black leading-none text-white">+</button>
-            <button className="h-6 rounded bg-brand-red px-3 text-[12px] font-bold text-white">Đặt ngay</button>
+            <button className="h-6 rounded bg-brand-red px-3 text-[12px] font-bold text-white text-center">
+              Đặt ngay
+            </button>
           </div>
         </div>
 

@@ -13,7 +13,7 @@ export function MenuGrid() {
       </div>
 
       <div className="mx-auto max-w-[790px] px-5 md:px-0">
-        <h1 className="section-title mb-24 text-center text-[44px] md:text-[48px]">Hôm nay bạn muốn ăn gì?</h1>
+        <h1 className="heading-section mb-24 text-center text-brand-green text-[44px] md:text-[48px]">Hôm nay bạn muốn ăn gì?</h1>
 
         <div className="mb-5 flex h-7 items-center rounded-full border-2 border-[#1e9f5a] bg-white px-3 text-[13px] text-[#9aa49a]">
           🔍 <span className="ml-2">Tìm kiếm món ăn...</span>
@@ -34,7 +34,7 @@ export function MenuGrid() {
         </div>
 
         <div className="mt-14 text-center">
-          <button className="rounded-md bg-tayho-red px-16 py-3 text-[18px] font-medium text-white">Xem thêm</button>
+          <button className="rounded-md bg-brand-red px-16 py-3 text-[18px] font-medium text-white">Xem thêm</button>
         </div>
       </div>
     </section>
