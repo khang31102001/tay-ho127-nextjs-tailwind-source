@@ -1,15 +1,36 @@
 import Image from "next/image";
+import { Reveal } from "../common/animation";
+import { ButtonLink } from "../ui/ButtonLink";
 export function PromotionZone() {
   return (
-    <section className="promotion-zone">
-      <Image
+     <section className="relative min-h-svh snap-start overflow-hidden md:snap-always">
+      <Reveal
+        type="zoom-in"
+        className="absolute inset-0"
+        duration={1}
+      >
+        <img
           src="/images/promotion-zone-1.png"
-          alt="Hoạt động tại Bánh Cuốn Tây Hồ 127"
-          fill
-          className="object-cover"
-          sizes="100vw"
-          priority
+          alt="Ưu đãi bánh cuốn Tây Hồ"
+          className="size-full object-cover"
         />
+      </Reveal>
+
+      <div className="relative z-10 flex min-h-svh items-center justify-center">
+        <div className="text-center">
+          <Reveal type="fade-up" delay={0.15}>
+            <h2 className="text-brand-green text-5xl font-bold">
+              Hương vị truyền thống
+            </h2>
+          </Reveal>
+
+          <Reveal type="fade-up" delay={0.3}>
+            <ButtonLink href="/menu" className="mt-8">
+              Xem ưu đãi
+            </ButtonLink>
+          </Reveal>
+        </div>
+      </div>
     </section>
   );
 }

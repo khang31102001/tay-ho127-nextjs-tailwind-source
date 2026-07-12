@@ -27,7 +27,7 @@ export function Footer() {
           <Logo tone="white" className="h-auto w-full" />
         </div>
         <div>
-          <h3 className="text-sm font-black uppercase tracking-[0.22em] text-white">Thông tin</h3>
+          <h3 className="text-sm font-black uppercase tracking-[0.22em] text-white">Theo dõi chúng tôi</h3>
           <div className="mt-5 space-y-3 text-sm leading-6 text-white/70">
             <div className="flex items-start gap-3">
               <div className="flex p-2 items-center justify-center rounded-full bg-orange-500 transition hover:scale-105 hover:bg-orange-600">
@@ -62,7 +62,7 @@ export function Footer() {
           </div>
         </div>
         <div>
-          <h3 className="text-sm font-black uppercase tracking-[0.22em] text-white">Theo dõi chúng tôi</h3>
+          <h3 className="text-sm font-black uppercase tracking-[0.22em] text-white">Thông tin liên hệ</h3>
           <div className="mt-5 space-y-3 text-sm leading-6 text-white/70">
             <div className="flex items-start gap-3">
               <MapPin className="mt-1 size-4 shrink-0 text-white" />

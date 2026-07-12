@@ -1,3 +1,5 @@
+import { Reveal } from "../common/animation";
+
 const stats = [
   { value: "60+", label: "Năm kinh nghiệm" },
   { value: "50+", label: "Món ăn đa dạng" },
@@ -7,19 +9,27 @@ const stats = [
 
 export function StatsMichelin() {
   return (
-      <div className="py-16 text-center">
+    <div className="py-16 text-center">
+      <Reveal type="fade-up" delay={0.2}>
         <h2 className="heading-section text-[34px] text-brand-green">Hơn 60 năm đồng hành và phục vụ</h2>
-        <p className="mt-2 text-[16px] font-medium text-black">chúng tôi tự hào về chất lượng và sự tin tưởng từ khách hàng</p>
+      </Reveal>
 
-        <div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4">
-          {stats.map((item) => (
+      <Reveal type="fade-up" delay={0.4}>
+        <p className="mt-2 text-[16px] font-medium text-black">chúng tôi tự hào về chất lượng và sự tin tưởng từ khách hàng</p>
+      </Reveal>
+
+
+      <div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4">
+        {stats.map((item, index) => (
+          <Reveal type="fade-up" delay={index * 0.2}>
             <div key={item.label}>
               <div className="font-display text-[48px] font-black leading-none text-brand-green">{item.value}</div>
               <p className="mt-3 text-[14px] font-medium text-black">{item.label}</p>
             </div>
-          ))}
-        </div>
-
+          </Reveal>
+        ))}
+      </div>
+      <Reveal type="fade-up" delay={1.2}>
         <div className="mt-14 grid items-center gap-8 rounded-[22px] bg-[#fff2c3] py-6 px-16 text-left md:grid-cols-[300px_1fr] md:p-0 md:pr-10">
           <img src="/images/michelin-guide.png" alt="Michelin Guide Ho Chi Minh City" className="mx-auto -mt-6 w-[275px] drop-shadow-2xl md:-my-8" />
           <div className="flex flex-col items-center justify-center p-4 md:text-left">
@@ -32,6 +42,8 @@ export function StatsMichelin() {
             </p>
           </div>
         </div>
-      </div>
+      </Reveal>
+
+    </div>
   );
 }

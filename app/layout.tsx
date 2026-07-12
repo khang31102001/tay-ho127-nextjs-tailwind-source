@@ -41,11 +41,17 @@ export default function RootLayout({ children }: RootLayoutProps) {
   // Trả về cấu trúc HTML chính của Next.js.
   return (
     <html lang="vi">
-      <body>
-       <AppProviders>
-          <Header variant="light" />
-          <main>{children}</main>
-          <Footer />
+      <body className="min-h-svh">
+        <AppProviders>
+          <div className="flex min-h-svh flex-col">
+            <Header variant="light" />
+
+            <main className="min-h-0 flex-1 snap-y snap-proximity">
+              {children}
+            </main>
+
+            <Footer />
+          </div>
         </AppProviders>
       </body>
     </html>

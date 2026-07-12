@@ -2,7 +2,7 @@ import { Header } from "@/components/layout/Header";
 
 export function TopHero() {
   return (
-    <section className="relative h-[492px] overflow-hidden bg-black">
+    <section className="relative min-h-svh snap-start snap-always overflow-hidden bg-black">
    
       <img src="/images/hero-cooking.png" alt="Tráng bánh cuốn thủ công" className="h-full w-full object-cover opacity-90" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/10 to-black/30" />

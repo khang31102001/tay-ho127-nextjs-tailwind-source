@@ -1,12 +1,15 @@
 import Image from "next/image";
 import { Container } from "../ui/Container";
 import { ChevronLeftIcon, ChevronRightIcon, StarIcon } from "lucide-react";
+import { Reveal } from "../common/animation";
 
 export function Testimonials() {
   return (
-    <section className="bg-[#666664] py-16 text-white">
+    <section className="min-h-svh snap-start snap-always bg-[#666664] py-16 text-white">
       <Container className=" text-center">
-        <h2 className="heading-section font-black">Khách hàng <span className="text-yellow-500">nói gì</span> về chúng tôi</h2>
+        <Reveal type="fade-up"> 
+          <h2 className="heading-section font-black">Khách hàng <span className="text-yellow-500">nói gì</span> về chúng tôi</h2>
+        </Reveal>
        <div className="mt-6 flex items-center justify-center gap-3 ">
           <Image 
           src="/images/google-logo.png" alt="Testimonial" 

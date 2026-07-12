@@ -23,8 +23,8 @@ import { TopHero } from "@/components/home/TopHero";
 export default function HomePage() {
   // Render landing page với hệ section tách nhỏ để dễ bảo trì.
   return (
-    <>
-        
+   <div className="">
+    {/* h-svh snap-y snap-proximity overflow-y-auto overscroll-y-contain md:snap-mandatory */}
       <TopHero />
       <StorySection />
       <PromotionZone />
@@ -32,11 +32,6 @@ export default function HomePage() {
      
       <BrandProofSection />
       <Testimonials />
-      {/* <BrandProof />
-      <Highlights />
-      <MenuPreview />
-      
-      <CTASection /> */}
-    </>
+   </div>
   );
 }
