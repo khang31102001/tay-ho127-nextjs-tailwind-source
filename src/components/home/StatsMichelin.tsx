@@ -22,7 +22,7 @@ export function StatsMichelin() {
 
       <div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4">
         {stats.map((item, index) => (
-          <Reveal key={item.label} type="fade-up" delay={index * 0.2}>
+          <Reveal type="fade-up" delay={index * 0.2}>
             <div key={item.label}>
               <div className="font-display text-[48px] font-black leading-none text-brand-green">{item.value}</div>
               <p className="mt-3 text-[14px] font-medium text-black">{item.label}</p>

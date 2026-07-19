@@ -1,10 +1,9 @@
-import Image from "next/image";
 import type { MenuItem } from "@/data/menu-items";
 import { formatCurrency } from "@/data/menu-items";
 
 type ProductCardProps = {
-  item: MenuItem;
- 
+  item: UiProduct;
+
 };
 
 export function ProductCard({ item }: ProductCardProps) {

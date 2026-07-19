@@ -1,7 +1,7 @@
 // Import hero riêng cho trang thực đơn.
 import { MenuHero } from "@/components/sections/MenuHero";
 // Import grid danh sách món.
-import { MenuGrid } from "@/components/menu/MenuGrid";
+import MenuGrid from "@/components/menu/MenuGrid";
 // Import CTA cuối trang dùng chung.
 import { CTASection } from "@/components/sections/CTASection";
 
