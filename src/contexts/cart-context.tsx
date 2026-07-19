@@ -2,6 +2,7 @@
 
 import {
   createContext,
+  ReactNode,
   type ReactNode,
   useCallback,
   useContext,
@@ -10,6 +11,9 @@ import {
   useState,
 } from "react";
 
+import type { CartContextType, CartItem, CartProduct } from "@/types/cart";
+
+type Product = CartProduct;
 const CART_STORAGE_KEY = "tayho-cart";
 
 export type Product = {
@@ -112,6 +116,20 @@ export function CartProvider({ children }: CartProviderProps) {
     );
   }, []);
 
+  const updateQuantity = useCallback((productId: string, quantity: number) => {
+    if (quantity <= 0) {
+      removeFromCart(productId);
+      return;
+    }
+
+    setCartItems((currentItems) =>
+      currentItems.map((item) =>
+        item.id === productId ? { ...item, quantity } : item,
+      ),
+    );
+  }, [removeFromCart]);
+
+  const clearCart = useCallback(() => setCartItems([]), []);
   const updateQuantity = useCallback(
     (productId: string, quantity: number) => {
       if (quantity <= 0) {
@@ -165,6 +183,7 @@ export function CartProvider({ children }: CartProviderProps) {
       updateQuantity,
       clearCart,
     }),
+    [cartItems, cartCount, totalPrice, addToCart, removeFromCart, updateQuantity, clearCart],
     [
       cartItems,
       cartCount,
