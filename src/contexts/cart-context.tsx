@@ -2,7 +2,6 @@
 
 import {
   createContext,
-  ReactNode,
   type ReactNode,
   useCallback,
   useContext,
@@ -11,43 +10,25 @@ import {
   useState,
 } from "react";
 
-import type { CartContextType, CartItem, CartProduct } from "@/types/cart";
+import type {
+  CartContextType,
+  CartItem,
+  CartProduct,
+} from "@/types/cart";
 
-type Product = CartProduct;
 const CART_STORAGE_KEY = "tayho-cart";
-
-export type Product = {
-  id: string;
-  name: string;
-  price: number;
-  image: string;
-};
-
-export type CartItem = Product & {
-  quantity: number;
-};
-
-type CartContextType = {
-  cartItems: CartItem[];
-  cartCount: number;
-  totalPrice: number;
-  addToCart: (product: Product) => void;
-  removeFromCart: (productId: string) => void;
-  updateQuantity: (productId: string, quantity: number) => void;
-  clearCart: () => void;
-};
-
-const CartContext = createContext<CartContextType | null>(null);
 
 type CartProviderProps = {
   children: ReactNode;
 };
 
+const CartContext = createContext<CartContextType | null>(null);
+
 export function CartProvider({ children }: CartProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isCartLoaded, setIsCartLoaded] = useState(false);
 
-  // Đọc giỏ hàng từ localStorage khi ứng dụng được tải.
+  // Đọc giỏ hàng đã lưu khi ứng dụng được tải.
   useEffect(() => {
     try {
       const savedCart = localStorage.getItem(CART_STORAGE_KEY);
@@ -67,7 +48,7 @@ export function CartProvider({ children }: CartProviderProps) {
     }
   }, []);
 
-  // Chỉ lưu sau khi đã đọc xong dữ liệu cũ từ localStorage.
+  // Chỉ lưu sau khi đã đọc xong dữ liệu cũ.
   useEffect(() => {
     if (!isCartLoaded) {
       return;
@@ -83,7 +64,7 @@ export function CartProvider({ children }: CartProviderProps) {
     }
   }, [cartItems, isCartLoaded]);
 
-  const addToCart = useCallback((product: Product) => {
+  const addToCart = useCallback((product: CartProduct) => {
     setCartItems((currentItems) => {
       const existingItem = currentItems.find(
         (item) => item.id === product.id,
@@ -116,20 +97,6 @@ export function CartProvider({ children }: CartProviderProps) {
     );
   }, []);
 
-  const updateQuantity = useCallback((productId: string, quantity: number) => {
-    if (quantity <= 0) {
-      removeFromCart(productId);
-      return;
-    }
-
-    setCartItems((currentItems) =>
-      currentItems.map((item) =>
-        item.id === productId ? { ...item, quantity } : item,
-      ),
-    );
-  }, [removeFromCart]);
-
-  const clearCart = useCallback(() => setCartItems([]), []);
   const updateQuantity = useCallback(
     (productId: string, quantity: number) => {
       if (quantity <= 0) {
@@ -183,7 +150,6 @@ export function CartProvider({ children }: CartProviderProps) {
       updateQuantity,
       clearCart,
     }),
-    [cartItems, cartCount, totalPrice, addToCart, removeFromCart, updateQuantity, clearCart],
     [
       cartItems,
       cartCount,

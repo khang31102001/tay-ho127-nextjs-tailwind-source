@@ -1,7 +1,6 @@
 "use client";
 
 import { useCart } from "@/contexts/cart-context";
-import type { UiProduct } from "@/types/menu";
 import { formatCurrency } from "@/data/menu-items";
 import { UiProduct } from "@/types/menu";
 import Image from "next/image";
