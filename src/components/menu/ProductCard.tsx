@@ -42,20 +42,26 @@ export function ProductCard({ item }: ProductCardProps) {
           </div>
         </div>
 
-        <div className="mt-3 flex items-center justify-between text-sm gap-1">
-          <div className="text-[#1f1f1f]">★★★★★ ({item.ratingCount}) đánh giá</div>
-          <div className="flex justify-end gap-2">
+        <div className="mt-3 flex flex-col gap-2 text-sm sm:flex-row sm:items-center sm:justify-between">
+          <div className="min-w-0 text-[#1f1f1f] sm:flex-1">
+            <span className="whitespace-nowrap">★★★★★</span>{" "}
+            <span>({item.ratingCount}) đánh giá</span>
+          </div>
+
+          <div className="flex shrink-0 items-center gap-2 self-start sm:self-auto">
             <button
               type="button"
+              aria-label={`Thêm ${item.name} vào giỏ hàng`}
               onClick={() => addToCart(cartProduct)}
-              className="flex h-6 w-6 items-center justify-center rounded bg-brand-red text-lg font-black leading-none text-white"
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded bg-brand-red text-lg font-black leading-none text-white"
             >
               +
             </button>
+
             <button
               type="button"
               onClick={() => addToCart(cartProduct)}
-              className="h-6 rounded bg-brand-red px-3 text-[12px] font-bold text-white text-center"
+              className="min-h-8 shrink-0 whitespace-nowrap rounded bg-brand-red px-3 py-1.5 text-center text-[12px] font-bold leading-none text-white"
             >
               Đặt ngay
             </button>
