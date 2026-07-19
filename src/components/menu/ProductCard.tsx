@@ -1,5 +1,6 @@
-import type { MenuItem } from "@/data/menu-items";
 import { formatCurrency } from "@/data/menu-items";
+import { UiProduct } from "@/types/menu";
+import Image from "next/image";
 
 type ProductCardProps = {
   item: UiProduct;
