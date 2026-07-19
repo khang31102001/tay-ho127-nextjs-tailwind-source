@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { LanguageDropdown } from "../common/language-dropdown";
+import { useCart } from "@/contexts/cart-context";
 
 type HeaderProps = {
   variant?: "dark" | "light";
@@ -23,9 +24,9 @@ const navItems = [
 export function Header({ variant = "light" }: HeaderProps) {
   const router = useRouter();
   const [isChangeLanguageOpen, setIsChangeLanguageOpen] = useState(false);
+  const { cartCount } = useCart();
 
   const isDark = variant === "dark";
-  const cartCount = 3;
 
   return (
     <header className={`sticky left-0 top-0 z-50 w-full transition-all duration-300 ${isDark
