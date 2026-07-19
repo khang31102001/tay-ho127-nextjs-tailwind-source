@@ -3,6 +3,8 @@
 import { useCart } from "@/contexts/cart-context";
 import type { UiProduct } from "@/types/menu";
 import { formatCurrency } from "@/data/menu-items";
+import { UiProduct } from "@/types/menu";
+import Image from "next/image";
 
 type ProductCardProps = {
   item: UiProduct;
@@ -21,7 +23,7 @@ export function ProductCard({ item }: ProductCardProps) {
   return (
     <article className="relative overflow-hidden rounded-md border border-brand-red bg-brand-cream shadow-card">
       <div className="relative h-[142px] overflow-hidden">
-        <img src={item.image} alt={item.name} className="h-full w-full object-cover transition-transform duration-500 ease-out hover:scale-105" />
+        <Image src={item.image} alt={item.name} width={100} height={142} className="h-full w-full object-cover transition-transform duration-500 ease-out hover:scale-105" />
         {item.badge && (
           <span className="absolute right-2 top-2 rounded bg-brand-red px-2 py-1 text-[10px] font-black text-white">
             {item.badge}

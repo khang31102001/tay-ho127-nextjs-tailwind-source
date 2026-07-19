@@ -1,4 +1,6 @@
 ﻿"use client";
+import { formatCurrency } from "@/data/menu-items";
+import Image from "next/image";
 
 import { useCart } from "@/contexts/cart-context";
 import { formatCurrency } from "@/data/menu-items";
@@ -54,6 +56,17 @@ export function CheckoutSection() {
                   </div>
                   <div className="self-center text-right text-[16px] font-black text-black">
                     {formatCurrency(item.price * item.quantity)}
+            {orderLines.map((line, index) => (
+              <div key={line.name} className="grid grid-cols-[115px_1fr_120px] gap-4 border-b border-black py-3 last:border-b-0">
+                <Image src="/assets/product-banh-cuon.png" alt={line.name} width={105} height={88} className="h-[88px] w-[105px] rounded object-cover" />
+                <div>
+                  <h3 className="text-[16px] font-black text-brand-greenDark">{line.name}</h3>
+                  <p className="mt-2 text-[13px] font-bold text-black">Số lượng <button className="mx-2 text-black">−</button> <strong className="text-black">{line.qty}</strong> <button className="mx-2 text-black">+</button></p>
+                  <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-[12px] text-[#494949]">
+                    <span>{index === 1 ? "Loại chả" : "Nước mắm"}</span>
+                    {line.options.map((option, optionIndex) => (
+                      <label key={option} className="flex items-center gap-1"><RadioDot checked={optionIndex === 0} /> {option}</label>
+                    ))}
                   </div>
                 </div>
               ))

@@ -1,10 +1,11 @@
+import Image from "next/image";
 import { Header } from "@/components/layout/Header";
 
 export function TopHero() {
   return (
     <section className="relative min-h-svh snap-start snap-always overflow-hidden bg-black">
    
-      <img src="/images/hero-cooking.png" alt="Tráng bánh cuốn thủ công" className="h-full w-full object-cover opacity-90" />
+      <Image src="/images/hero-cooking.png" alt="Tráng bánh cuốn thủ công" width={1200} height={800} className="h-full w-full object-cover opacity-90" />
       <div className="absolute inset-0 bg-gradient-to-r from-black/30 via-black/10 to-black/30" />
 
       <button className="absolute left-1/2 top-[245px] z-20 flex h-[78px] w-[78px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-tayho-orange text-3xl text-white shadow-card">

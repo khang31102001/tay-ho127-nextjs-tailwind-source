@@ -3,6 +3,7 @@
 import {
   createContext,
   ReactNode,
+  type ReactNode,
   useCallback,
   useContext,
   useEffect,
@@ -13,25 +14,74 @@ import {
 import type { CartContextType, CartItem, CartProduct } from "@/types/cart";
 
 type Product = CartProduct;
+const CART_STORAGE_KEY = "tayho-cart";
+
+export type Product = {
+  id: string;
+  name: string;
+  price: number;
+  image: string;
+};
+
+export type CartItem = Product & {
+  quantity: number;
+};
+
+type CartContextType = {
+  cartItems: CartItem[];
+  cartCount: number;
+  totalPrice: number;
+  addToCart: (product: Product) => void;
+  removeFromCart: (productId: string) => void;
+  updateQuantity: (productId: string, quantity: number) => void;
+  clearCart: () => void;
+};
 
 const CartContext = createContext<CartContextType | null>(null);
 
-export function CartProvider({ children }: { children: ReactNode }) {
+type CartProviderProps = {
+  children: ReactNode;
+};
+
+export function CartProvider({ children }: CartProviderProps) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [isCartLoaded, setIsCartLoaded] = useState(false);
 
-  // Đọc dữ liệu giỏ hàng khi tải trang
+  // Đọc giỏ hàng từ localStorage khi ứng dụng được tải.
   useEffect(() => {
-    const savedCart = localStorage.getItem("tayho-cart");
+    try {
+      const savedCart = localStorage.getItem(CART_STORAGE_KEY);
 
-    if (savedCart) {
-      setCartItems(JSON.parse(savedCart));
+      if (savedCart) {
+        const parsedCart: unknown = JSON.parse(savedCart);
+
+        if (Array.isArray(parsedCart)) {
+          setCartItems(parsedCart as CartItem[]);
+        }
+      }
+    } catch (error) {
+      console.error("Không thể đọc dữ liệu giỏ hàng:", error);
+      localStorage.removeItem(CART_STORAGE_KEY);
+    } finally {
+      setIsCartLoaded(true);
     }
   }, []);
 
-  // Lưu giỏ hàng khi dữ liệu thay đổi
+  // Chỉ lưu sau khi đã đọc xong dữ liệu cũ từ localStorage.
   useEffect(() => {
-    localStorage.setItem("tayho-cart", JSON.stringify(cartItems));
-  }, [cartItems]);
+    if (!isCartLoaded) {
+      return;
+    }
+
+    try {
+      localStorage.setItem(
+        CART_STORAGE_KEY,
+        JSON.stringify(cartItems),
+      );
+    } catch (error) {
+      console.error("Không thể lưu dữ liệu giỏ hàng:", error);
+    }
+  }, [cartItems, isCartLoaded]);
 
   const addToCart = useCallback((product: Product) => {
     setCartItems((currentItems) => {
@@ -42,12 +92,21 @@ export function CartProvider({ children }: { children: ReactNode }) {
       if (existingItem) {
         return currentItems.map((item) =>
           item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? {
+                ...item,
+                quantity: item.quantity + 1,
+              }
             : item,
         );
       }
 
-      return [...currentItems, { ...product, quantity: 1 }];
+      return [
+        ...currentItems,
+        {
+          ...product,
+          quantity: 1,
+        },
+      ];
     });
   }, []);
 
@@ -71,18 +130,50 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, [removeFromCart]);
 
   const clearCart = useCallback(() => setCartItems([]), []);
+  const updateQuantity = useCallback(
+    (productId: string, quantity: number) => {
+      if (quantity <= 0) {
+        removeFromCart(productId);
+        return;
+      }
 
-  const cartCount = cartItems.reduce(
-    (total, item) => total + item.quantity,
-    0,
+      setCartItems((currentItems) =>
+        currentItems.map((item) =>
+          item.id === productId
+            ? {
+                ...item,
+                quantity,
+              }
+            : item,
+        ),
+      );
+    },
+    [removeFromCart],
   );
 
-  const totalPrice = cartItems.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0,
+  const clearCart = useCallback(() => {
+    setCartItems([]);
+  }, []);
+
+  const cartCount = useMemo(
+    () =>
+      cartItems.reduce(
+        (total, item) => total + item.quantity,
+        0,
+      ),
+    [cartItems],
   );
 
-  const value = useMemo(
+  const totalPrice = useMemo(
+    () =>
+      cartItems.reduce(
+        (total, item) => total + item.price * item.quantity,
+        0,
+      ),
+    [cartItems],
+  );
+
+  const value = useMemo<CartContextType>(
     () => ({
       cartItems,
       cartCount,
@@ -93,6 +184,15 @@ export function CartProvider({ children }: { children: ReactNode }) {
       clearCart,
     }),
     [cartItems, cartCount, totalPrice, addToCart, removeFromCart, updateQuantity, clearCart],
+    [
+      cartItems,
+      cartCount,
+      totalPrice,
+      addToCart,
+      removeFromCart,
+      updateQuantity,
+      clearCart,
+    ],
   );
 
   return (
@@ -102,11 +202,13 @@ export function CartProvider({ children }: { children: ReactNode }) {
   );
 }
 
-export function useCart() {
+export function useCart(): CartContextType {
   const context = useContext(CartContext);
 
   if (!context) {
-    throw new Error("useCart phải được sử dụng bên trong CartProvider");
+    throw new Error(
+      "useCart phải được sử dụng bên trong CartProvider",
+    );
   }
 
   return context;

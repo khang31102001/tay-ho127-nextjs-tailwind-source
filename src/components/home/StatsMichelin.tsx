@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Reveal } from "../common/animation";
 
 const stats = [
@@ -21,8 +22,8 @@ export function StatsMichelin() {
 
       <div className="mt-10 grid grid-cols-2 gap-8 md:grid-cols-4">
         {stats.map((item, index) => (
-                  <Reveal key={item.label} type="fade-up" delay={index * 0.2}>
-                    <div>
+          <Reveal key={index} type="fade-up" delay={index * 0.2}>
+            <div key={item.label}>
               <div className="font-display text-[48px] font-black leading-none text-brand-green">{item.value}</div>
               <p className="mt-3 text-[14px] font-medium text-black">{item.label}</p>
             </div>
@@ -31,9 +32,9 @@ export function StatsMichelin() {
       </div>
       <Reveal type="fade-up" delay={1.2}>
         <div className="mt-14 grid items-center gap-8 rounded-[22px] bg-[#fff2c3] py-6 px-16 text-left md:grid-cols-[300px_1fr] md:p-0 md:pr-10">
-          <img src="/images/michelin-guide.png" alt="Michelin Guide Ho Chi Minh City" className="mx-auto -mt-6 w-[275px] drop-shadow-2xl md:-my-8" />
+          <Image src="/images/michelin-guide.png" alt="Michelin Guide Ho Chi Minh City" width={275} height={200} className="mx-auto -mt-6 w-[275px] drop-shadow-2xl md:-my-8" />
           <div className="flex flex-col items-center justify-center p-4 md:text-left">
-            <img src="/images/michelin-2026.png" alt="Michelin 2026" className="mx-auto mb-5 w-[110px] md:mx-0" />
+            <Image src="/images/michelin-2026.png" alt="Michelin 2026" width={110} height={110} className="mx-auto mb-5 w-[110px] md:mx-0" />
             <h3 className="text-center text-[21px] font-black italic leading-7 text-brand-green">
               Bước chân đầu tiên mang bản sắc dân tộc<br />đến nền ẩm thực quốc tế.
             </h3>

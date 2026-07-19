@@ -1,5 +1,6 @@
 
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import {
@@ -35,7 +36,7 @@ export function Header({ variant = "light" }: HeaderProps) {
       }`}>
       <div className="mx-auto flex h-[86px] w-full max-w-[880px] items-center justify-between px-5 md:px-0">
         <Link href="/" className="block w-[150px] md:w-[165px]" aria-label="Bánh Cuốn Tây Hồ 127">
-          <img src={isDark ? "/images/logo-white.png" : "/images/logo-color.png"} alt="Tây Hồ 127" className="h-auto w-full" />
+          <Image src={isDark ? "/images/logo-white.png" : "/images/logo-color.png"} alt="Tây Hồ 127" width={165} height={86}   className="h-auto w-full" />
         </Link>
 
         <nav className="hidden items-center gap-16 text-[16px] font-black md:flex">
