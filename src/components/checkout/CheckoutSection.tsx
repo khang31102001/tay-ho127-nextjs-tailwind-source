@@ -1,4 +1,5 @@
 import { formatCurrency } from "@/data/menu-items";
+import Image from "next/image";
 
 const orderLines = [
   {
@@ -35,7 +36,7 @@ export function CheckoutSection() {
           <div className="space-y-0">
             {orderLines.map((line, index) => (
               <div key={line.name} className="grid grid-cols-[115px_1fr_120px] gap-4 border-b border-black py-3 last:border-b-0">
-                <img src="/assets/product-banh-cuon.png" alt={line.name} className="h-[88px] w-[105px] rounded object-cover" />
+                <Image src="/assets/product-banh-cuon.png" alt={line.name} width={105} height={88} className="h-[88px] w-[105px] rounded object-cover" />
                 <div>
                   <h3 className="text-[16px] font-black text-brand-greenDark">{line.name}</h3>
                   <p className="mt-2 text-[13px] font-bold text-black">Số lượng <button className="mx-2 text-black">−</button> <strong className="text-black">{line.qty}</strong> <button className="mx-2 text-black">+</button></p>

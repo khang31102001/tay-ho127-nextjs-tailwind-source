@@ -9,9 +9,11 @@ export function PromotionZone() {
         className="absolute inset-0"
         duration={1}
       >
-        <img
+        <Image
           src="/images/promotion-zone-1.png"
           alt="Ưu đãi bánh cuốn Tây Hồ"
+          width={1200}
+          height={800}
           className="size-full object-cover"
         />
       </Reveal>

@@ -1,9 +1,10 @@
+import Image from "next/image";
 export function Footer() {
   return (
     <footer className="site-shell bg-tayho-green px-6 py-9 text-white">
       <div className="mx-auto grid max-w-[880px] grid-cols-1 gap-8 md:grid-cols-[1.1fr_1fr_1.25fr] md:items-start">
         <div className="w-[260px]">
-          <img src="/assets/logo-white.png" alt="Tây Hồ 127" />
+          <Image src="/assets/logo-white.png" alt="Tây Hồ 127" width={260} height={100} />
         </div>
 
         <div>
