@@ -1,9 +1,38 @@
-import { menuItems } from "@/data/menu-items";
 import { ProductCard } from "./ProductCard";
+import { fetchMenu } from "@/lib/mockMenuApi";
+import type { MenuResponse, UiProduct } from "@/types/menu";
 
 const categories = ["Tất cả", "Món mặn", "Món chay", "Ăn kèm"];
 
-export function MenuGrid() {
+// Server component - có thể dùng async để gọi mock API file JSON
+export default async function MenuGrid() {
+  // Lấy data từ mock API
+  const resp: MenuResponse = await fetchMenu();
+  const groups = resp?.data?.menu?.groups || [];
+
+  // Flatten products và map về kiểu component đang dùng
+  const items: UiProduct[] = [];
+  groups.forEach((group) => {
+    (group.categories || []).forEach((category) => {
+      (category.subCategories || []).forEach((sub) => {
+        (sub.products || []).forEach((product) => {
+          items.push({
+            // id sử dụng index-based id để tương thích với ProductCard id:number
+            id: items.length + 1,
+            name: (product.name && (product.name.vi || product.name.en)) || product.slug || "",
+            // Map category thành 3 nhãn chính; nếu không biết thì gán Món mặn làm mặc định
+            category: category.name?.toLowerCase().includes("chay") ? "Món chay" : (category.name?.toLowerCase().includes("thêm") || category.name?.toLowerCase().includes("ăn kèm") || category.name?.toLowerCase().includes("ăn kèm")) ? "Ăn kèm" : "Món mặn",
+            price: product.price?.amount || 0,
+            oldPrice: undefined,
+            badge: product.productType || undefined,
+            ratingCount: 0,
+            image: product.imageUrl || "/images/banh-cuon-dish.jpg",
+          });
+        });
+      });
+    });
+  });
+
   return (
     <section className="relative bg-brand-cream py-24">
       <div className="pointer-events-none absolute left-2 top-3 hidden space-y-4 md:block">
@@ -28,7 +57,7 @@ export function MenuGrid() {
         </div>
 
         <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2 md:grid-cols-3">
-          {menuItems.map((item) => (
+          {items.map((item) => (
             <ProductCard key={item.id} item={item} />
           ))}
         </div>
